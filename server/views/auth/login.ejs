@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./../templates/auth-header.ejs') %>
+  <body>
+    <div id="app">
+      <section class="section">
+        <div class="container mt-5">
+          <div class="row">
+            <div class="col-md-6 mx-auto">
+              <div class="login-brand">
+                <img src="/images/logo/logo.png" alt="logo" height="70" />
+              </div>
+              <div class="card card-primary">
+                <div class="card-header"><h4>Login</h4></div>
+                <div class="card-body">
+                  <!-- Alert -->
+                  <%- include('./../templates/message.ejs') %>
+                  <!-- End of Alert -->
+                  <form
+                    method="POST"
+                    action="/admin/login"
+                    class="needs-validation"
+                  >
+                    <div class="form-group">
+                      <label for="username">Username</label>
+                      <input
+                        id="username"
+                        type="text"
+                        class="form-control"
+                        name="username"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Password</label>
+                      <input
+                        id="password"
+                        type="password"
+                        class="form-control"
+                        name="password"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <button
+                        type="submit"
+                        class="btn btn-primary btn-lg btn-block"
+                        tabindex="4"
+                      >
+                        Login
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div class="text-muted text-center">
+                Don't have an account?
+                <a href="/admin/signup">Register</a>
+              </div>
+              <div class="simple-footer">
+                Copyright &copy; <% let date = new Date(); let year =
+                date.getFullYear(); if (year == "2020") { %> <%= year %> <% }
+                else { %> 2020 - <%= year %><% } %>
+                <div class="bullet"></div>
+                Design By
+                <a href="https://github.com/adhiariyadi/" target="_blank"
+                  >Adhi Ariyadi</a
+                >.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <%- include('./../templates/auth-footer.ejs') %>
+  </body>
+</html>

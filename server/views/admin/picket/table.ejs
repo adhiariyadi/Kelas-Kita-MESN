@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    <button
+      type="button"
+      class="btn btn-primary ml-auto"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      <i class="fas fa-plus mr-1"></i> Tambah
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered table-hover table-striped"
+        id="dataTable"
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Hari</th>
+            <th>Nama Siswa</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% picket.forEach((data, index) => { %>
+          <tr>
+            <td><%= index+1; %></td>
+            <td><%= data.dayId.name %></td>
+            <% if (data.studentId) { %>
+            <td><%= data.studentId.name %></td>
+            <% } else { %>
+            <td>Deleted</td>
+            <% } %>
+            <td>
+              <form
+                action="/admin/picket/<%= data.id %>?_method=DELETE"
+                method="POST"
+              >
+                <a
+                  href="/admin/picket/<%= data.id %>"
+                  type="button"
+                  class="btn btn-warning btn-sm btn-circle btn-update"
+                  ><i class="fas fa-edit"></i
+                ></a>
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm btn-circle"
+                  onclick="return confirm('Yakin');"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

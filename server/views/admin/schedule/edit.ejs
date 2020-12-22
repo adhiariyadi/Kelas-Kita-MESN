@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-header">
+    <h4>Edit Jadwal Pelajaran</h4>
+  </div>
+  <form action="/admin/schedule?_method=PUT" method="POST">
+    <div class="card-body">
+      <div class="form-group">
+        <label for="dayId">Hari</label>
+        <select class="form-control select2" id="dayId" name="dayId">
+          <option disabled>--- Pilih Hari ---</option>
+          <% day.forEach(data => { %>
+          <option value="<%= data.id %>"
+            <% if (schedule.dayId._id == data.id) { %>
+              selected
+            <% } %>
+            ><%= data.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="subjectId">Mata Pelajaran</label>
+        <select class="form-control select2" id="subjectId" name="subjectId">
+          <option disabled>--- Pilih Mata Pelajaran ---</option>
+          <% subject.forEach(data => { %>
+          <option value="<%= data.id %>"
+            <% if (schedule.subjectId._id == data.id) { %>
+              selected
+            <% } %>
+            ><%= data.name %></option>
+          <% }) %>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="start">Start Time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="start"
+          name="start"
+          value="<%= schedule.start %>"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="end">End Time</label>
+        <input
+          type="time"
+          class="form-control"
+          id="end"
+          name="end"
+          value="<%= schedule.end %>"
+          required
+        />
+      </div>
+      <input type="hidden" name="id" value="<%= schedule.id %>">
+    </div>
+    <div class="card-footer">
+      <a href="/admin/schedule" class="btn btn-secondary mr-2">Back</a>
+      <button type="submit" class="btn btn-primary">Update</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,44 @@
+<!-- Header -->
+<%- include('./templates/header.ejs') %>
+<!-- End of Header -->
+
+<body>
+    <div id="app">
+      <div class="main-wrapper main-wrapper-1">
+        <!-- Navbar -->
+        <%- include('./templates/navbar.ejs') %>
+        <!-- End of Navbar -->
+        
+        <!-- Sidebar -->
+        <%- include('./templates/sidebar.ejs') %>
+        <!-- End of Sidebar -->
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Blank Page</h1>
+            </div>
+
+            <div class="section-body">
+              <div class="card">
+                <div class="card-body text-center">
+                  <div class="mb-2">Info Message</div>
+                  <button class="btn btn-primary" id="toastr-1">Launch</button>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <!-- Footer -->
+        <%- include('./templates/footer.ejs') %>
+        <!-- End of Footer -->
+      </div>
+    </div>
+
+    <!-- Script -->
+    <%- include('./templates/script.ejs') %>
+    <!-- End of Script -->
+  </body>
+</html>

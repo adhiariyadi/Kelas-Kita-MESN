@@ -1,0 +1,155 @@
+<!-- Header -->
+<%- include('./../templates/header.ejs') %>
+<!-- End of Header -->
+
+  <body>
+    <div id="app">
+      <div class="main-wrapper main-wrapper-1">
+        <!-- Navbar -->
+        <%- include('./../templates/navbar.ejs') %>
+        <!-- End of Navbar -->
+        
+        <!-- Sidebar -->
+        <%- include('./../templates/sidebar.ejs') %>
+        <!-- End of Sidebar -->
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Dashboard</h1>
+              <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="/admin">Dashboard</a></div>
+                <div class="breadcrumb-item">Dashboard</div>
+              </div>
+            </div>
+
+            <!-- Alert -->
+            <%- include('./../templates/message.ejs') %>
+            <!-- End of Alert -->
+
+            <div class="section-body">
+              <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-primary">
+                      <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Total Siswa</h4>
+                      </div>
+                      <div class="card-body">
+                        <%= student.length %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-danger">
+                      <i class="fab fa-buffer"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Total Mata Pelajaran</h4>
+                      </div>
+                      <div class="card-body">
+                        <%= subject.length %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-warning">
+                      <i class="far fa-user"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Total Pengguna</h4>
+                      </div>
+                      <div class="card-body">
+                        <%= users.length %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                  <div class="card card-statistic-1">
+                    <div class="card-icon bg-success">
+                      <i class="far fa-file"></i>
+                    </div>
+                    <div class="card-wrap">
+                      <div class="card-header">
+                        <h4>Total Artikel</h4>
+                      </div>
+                      <div class="card-body">
+                        <%= article.length %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h4>Latest Articles</h4>
+                    </div>
+                    <div class="card-body">
+                      <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                          <thead>
+                            <tr>
+                              <th>#</th>
+                              <th>Author</th>
+                              <th>Thumbnail</th>
+                              <th>Judul</th>
+                              <th>Tanggal</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <% article.forEach((data, index) => { %>
+                            <tr class="text-aligins-middle">
+                              <td><%= index+1; %></td>
+                              <td><%= data.userId.name; %></td>
+                              <td>
+                                <img
+                                  alt="image"
+                                  src="<%= data.image; %>"
+                                  class="mr-2"
+                                  width="50"
+                                  data-toggle="tooltip"
+                                  data-original-title="<%= data.title; %>"
+                                />
+                              </td>
+                              <td><%= data.title; %></td>
+                              <td>
+                                <%= data.created.toLocaleString() %>
+                              </td>
+                            </tr>
+                            <% }) %>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>                  
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        
+        <!-- Footer -->
+        <%- include('./../templates/footer.ejs') %>
+        <!-- End of Footer -->
+      </div>
+    </div>
+
+    <!-- Script -->
+    <%- include('./../templates/script.ejs') %>
+    <script>
+      $("#dashboard").addClass("active");
+    </script>
+    <!-- End of Script -->
+  </body>
+</html>

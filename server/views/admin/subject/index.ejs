@@ -1,0 +1,64 @@
+<!-- Header -->
+<%- include('./../../templates/header.ejs') %>
+<!-- End of Header -->
+
+  <body>
+    <div id="app">
+      <div class="main-wrapper main-wrapper-1">
+        <!-- Navbar -->
+        <%- include('./../../templates/navbar.ejs') %>
+        <!-- End of Navbar -->
+        
+        <!-- Sidebar -->
+        <%- include('./../../templates/sidebar.ejs') %>
+        <!-- End of Sidebar -->
+
+        <!-- Main Content -->
+        <div class="main-content">
+          <section class="section">
+            <div class="section-header">
+              <h1>Mata Pelajaran</h1>
+              <div class="section-header-breadcrumb">
+                <div class="breadcrumb-item active"><a href="/admin">Dashboard</a></div>
+                <div class="breadcrumb-item">Mata Pelajaran</div>
+              </div>
+            </div>
+
+            <!-- Alert -->
+            <%- include('./../../templates/message.ejs') %>
+            <!-- End of Alert -->
+
+            <div class="section-body">
+              <!-- Table -->
+              <%- include('./table.ejs') %>
+              <!-- End Table -->
+            </div>
+          </section>
+        </div>
+        
+        <!-- Footer -->
+        <%- include('./../../templates/footer.ejs') %>
+        <!-- End of Footer -->
+      </div>
+
+      <!-- Modal -->
+      <%- include('./add-modal.ejs') %>
+      <%- include('./edit-modal.ejs') %>
+      <!-- End of Modal -->
+    </div>
+
+    <!-- Script -->
+    <%- include('./../../templates/script.ejs') %>
+    <script>
+      $("#subject").addClass("active");
+      $("#dataTable").on("click", ".btn-update", function () {
+        let id = $(this).data("id");
+        let name = $(this).data("name");
+        $("#edit-modal").modal("show");
+        $("#edit-modal .id").val(id);
+        $("#edit-modal #name").val(name);
+      });
+    </script>
+    <!-- End of Script -->
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<div class="card">
+  <div class="card-header">
+    <button
+      type="button"
+      class="btn btn-primary ml-auto"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      <i class="fas fa-plus mr-1"></i> Tambah
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered table-hover table-striped"
+        id="dataTable"
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Thumbnail</th>
+            <th>Judul</th>
+            <th>Konten</th>
+            <th>Tanggal</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% article.forEach((data, index) => { %>
+          <tr class="text-aligins-middle">
+            <td><%= index+1; %></td>
+            <td>
+              <img
+                alt="image"
+                src="<%= data.image; %>"
+                class="mr-2"
+                width="50"
+                data-toggle="tooltip"
+                data-original-title="<%= data.title; %>"
+              />
+            </td>
+            <td><%= data.title; %></td>
+            <td>
+              <%= data.content.substring(0, 50); %> <% if (data.content.length >
+              50) { %> .. <% } %>
+            </td>
+            <td>
+              <%= data.created.toLocaleString() %>
+            </td>
+            <td>
+              <form
+                action="/admin/article/<%= data.id %>?_method=DELETE"
+                method="POST"
+              >
+                <a
+                  href="javascript:void()"
+                  type="button"
+                  class="btn btn-warning btn-sm btn-circle btn-update"
+                  data-id="<%= data.id %>"
+                  data-title="<%= data.title %>"
+                  data-content="<%= data.content %>"
+                  ><i class="fas fa-edit"></i
+                ></a>
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm btn-circle"
+                  onclick="return confirm('Yakin');"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

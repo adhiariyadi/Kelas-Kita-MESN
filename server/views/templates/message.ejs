@@ -1,0 +1,17 @@
+<% if (alert.message != "") { %>
+<div
+  class="alert alert-<%= alert.status %> alert-dismissible show fade"
+  role="alert"
+>
+  <div class="alert-body">
+    <button class="close" data-dismiss="alert">
+      <span>×</span>
+    </button>
+    <% if (alert.status == "success") { %>
+    <i class="far fa-check-circle mr-1"></i>
+    <% } else if (alert.status == "danger") { %>
+    <i class="far fa-times-circle mr-1"></i>
+    <% } %> <%= alert.message %>
+  </div>
+</div>
+<% } %>

@@ -1,0 +1,74 @@
+<div class="card">
+  <div class="card-header">
+    <button
+      type="button"
+      class="btn btn-primary ml-auto"
+      data-toggle="modal"
+      data-target="#add-modal"
+    >
+      <i class="fas fa-plus mr-1"></i> Tambah
+    </button>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive">
+      <table
+        class="table table-bordered table-hover table-striped"
+        id="dataTable"
+      >
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Deskripsi</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% student.forEach((data, index) => { %>
+          <tr class="text-aligins-middle">
+            <td width="50"><%= index+1; %></td>
+            <td width="250">
+              <img
+                alt="image"
+                src="<%= data.image; %>"
+                class="mr-2"
+                height="50"
+                data-toggle="tooltip"
+                data-original-title="<%= data.name; %>"
+              />
+              <span><%= data.name; %></span>
+            </td>
+            <td>
+              <%= data.description.substring(0, 50); %> <% if
+              (data.description.length > 50) { %> .. <% } %>
+            </td>
+            <td width="150">
+              <form
+                action="/admin/student/<%= data.id %>?_method=DELETE"
+                method="POST"
+              >
+                <a
+                  href="javascript:void()"
+                  type="button"
+                  class="btn btn-warning btn-sm btn-circle btn-update"
+                  data-id="<%= data.id %>"
+                  data-name="<%= data.name %>"
+                  data-description="<%= data.description %>"
+                  ><i class="fas fa-edit"></i
+                ></a>
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm btn-circle"
+                  onclick="return confirm('Yakin');"
+                >
+                  <i class="fas fa-trash"></i>
+                </button>
+              </form>
+            </td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
